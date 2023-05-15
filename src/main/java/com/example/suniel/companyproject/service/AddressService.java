@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class AddressService {
     @Autowired
@@ -33,5 +35,9 @@ public class AddressService {
     @Transactional
     public void deleteAddressById(long id) {
         addressRepository.deleteAddressById(id);
+    }
+
+    public Optional<Address> getaddressById(long id) {
+        return addressRepository.findById(id);
     }
 }
