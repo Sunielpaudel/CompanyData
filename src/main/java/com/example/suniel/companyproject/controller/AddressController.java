@@ -19,6 +19,7 @@ public class AddressController {
     @GetMapping
     public ResponseEntity<List<Address>> getAddress(){
         System.out.println("Retrieving all addresses");
+        System.out.println("Changes from other teammate");
         List<Address> list = addressService.getAllAddresses();
         if (list.size()<=0) {
 
