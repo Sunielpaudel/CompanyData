@@ -3,6 +3,8 @@ package com.example.suniel.companyproject.controller;
 import com.example.suniel.companyproject.domain.Address;
 import com.example.suniel.companyproject.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +17,13 @@ public class AddressController {
     private AddressService addressService;
 
     @GetMapping
-    public List<Address> getAddress(){
-        return addressService.getAllAddresses();
+    public ResponseEntity<List<Address>> getAddress(){
+        List<Address> list = addressService.getAllAddresses();
+        if (list.size()<=0) {
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.of(Optional.of(list));
     }
     @GetMapping("/{id}")
     public Optional<Address> addressById(@RequestParam(value = "id") long id){
