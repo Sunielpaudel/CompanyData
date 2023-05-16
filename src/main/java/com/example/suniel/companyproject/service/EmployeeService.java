@@ -20,6 +20,8 @@ public class EmployeeService {
      */
 
     public List<Employee> getAllEmployees() {
+        System.out.println("Employee service");
+        System.out.println("Employee service test");
         return employeeRepository.findAll();
     }
 
@@ -38,6 +40,8 @@ public class EmployeeService {
 
 
     public Employee getEmployeeByLastName(String lastName) {
+        System.out.println("Employee last name");
+        System.out.println("Employee last name1");
         return employeeRepository.findByLastName(lastName);
     }
 }
