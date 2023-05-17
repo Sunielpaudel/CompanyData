@@ -37,7 +37,12 @@ public class AddressController {
     @PutMapping("/{id}")
     public void updateAddress(@PathVariable ("id") long id, @RequestBody Address address){
         addressService.updateAddress(id,address);
-
+    }
+    @PutMapping("/update")
+    public ResponseEntity<Address> updateAddressById(@RequestParam (value="id") Long id,
+                                                     @RequestBody Address address){
+        if(id != address.getId()){return new ResponseEntity(HttpStatus.BAD_REQUEST);}
+        return new ResponseEntity(addressService.updateAddressById(address), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

@@ -31,6 +31,9 @@ public class AddressService {
         address.setId(id);
         addressRepository.save(address);
     }
+    public Address updateAddressById(Address address){
+        return addressRepository.save(address);
+    }
 
     @Transactional
     public void deleteAddressById(long id) {
