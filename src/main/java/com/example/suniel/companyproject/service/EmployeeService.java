@@ -20,9 +20,12 @@ public class EmployeeService {
      */
 
     public List<Employee> getAllEmployees() {
+        System.out.println("changes 1 made by suniel");
+        System.out.println("changes 2 made by suniel");
+        System.out.println("Employee service");
+        System.out.println("Employee service test");
         return employeeRepository.findAll();
     }
-
     public void addEmployee(Employee employee) {
         employeeRepository.save(employee);
     }
@@ -31,13 +34,15 @@ public class EmployeeService {
         employee.setId(id);
         employeeRepository.save(employee);
     }
-
     public void deleteEmployeeId(long id) {
         employeeRepository.deleteAllById(Collections.singleton(id));
     }
 
-
     public Employee getEmployeeByLastName(String lastName) {
+        System.out.println("Employee last name");
+        System.out.println("Employee last name1");
+        System.out.println("changes 1 made by Dan");
+        System.out.println("changes 2 made by sam");
         return employeeRepository.findByLastName(lastName);
     }
 }

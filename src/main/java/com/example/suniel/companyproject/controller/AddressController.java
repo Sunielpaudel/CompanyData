@@ -18,6 +18,9 @@ public class AddressController {
 
     @GetMapping
     public ResponseEntity<List<Address>> getAddress(){
+        System.out.println("Getting all address data");
+        System.out.println("Retrieving all addresses");
+        System.out.println("Changes from other teammate");
         List<Address> list = addressService.getAllAddresses();
         if (list.size()<=0) {
 
@@ -27,17 +30,27 @@ public class AddressController {
     }
     @GetMapping("/{id}")
     public Optional<Address> addressById(@RequestParam(value = "id") long id){
+        System.out.println("Conflict Testing..");
+        System.out.println("changes 1 made by suniel");
+        System.out.println("changes 2 made by suniel");
         return addressService.getaddressById( id);
-
     }
     @PostMapping
     public void addAddress(@RequestBody Address address){
+        System.out.println("changes 1 made by suniel");
+        System.out.println("changes 2 made by suniel");
         addressService.addAddresses(address);
     }
     @PutMapping("/{id}")
     public void updateAddress(@PathVariable ("id") long id, @RequestBody Address address){
+         System.out.println("Updating address..");
         addressService.updateAddress(id,address);
 
+    }
+
+    @GetMapping("/address1/{id}")
+    public void getAddress1(@PathVariable long id){
+        addressService.deleteAddressById(id);
     }
 
     @DeleteMapping("/{id}")
@@ -45,4 +58,8 @@ public class AddressController {
         addressService.deleteAddressById(id);
     }
 
+    @GetMapping("/address2/{id}")
+    public void getAddress2(@PathVariable long id){
+        addressService.deleteAddressById(id);
+    }
 }
