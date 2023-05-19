@@ -11,14 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/addresses211")
+@RequestMapping("/addresses")
 public class AddressController {
     @Autowired
     private AddressService addressService;
 
     @GetMapping
     public ResponseEntity<List<Address>> getAddress(){
-        System.out.println("Getting all address data");
         System.out.println("Retrieving all addresses");
         System.out.println("Changes from other teammate");
         List<Address> list = addressService.getAllAddresses();
